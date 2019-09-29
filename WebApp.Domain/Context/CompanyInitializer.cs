@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace WebApp.Domain
 {
@@ -9,14 +10,15 @@ namespace WebApp.Domain
     {
         protected override void Seed(CompanyContext context)
         {
-            var emp = new Employee
+            for (int i = 0; i < 20; i++)
             {
-                Name = "him"
-                //Email = "aaajkkaa@gmail.com"
-                //ProjectCount = 1
-            };
+                context.Employees.Add(new Employee
+                {
+                    Name = "Person "+i,
+                    Email = "alalala"+i+"@gmail.com",
+                });
+            }
 
-            context.Employees.Add(emp);
             context.SaveChanges();
         }
     }

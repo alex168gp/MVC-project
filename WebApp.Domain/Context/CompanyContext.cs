@@ -9,21 +9,23 @@ namespace WebApp.Domain
     {
         public CompanyContext() : base("DefaultConnection")
         {
-            //Database.CreateIfNotExists();
+            // set an initializer for initial database fill
             Database.SetInitializer<CompanyContext>(new CompanyInitializer());
+
+            // force creation
             Database.Initialize(true);
         }
 
-        //public DbSet<Client> Clients { get; set; }
+        public DbSet<Client> Clients { get; set; }
 
 
-        //public DbSet<Project> Projects { get; set; }
+        public DbSet<Project> Projects { get; set; }
 
 
         public DbSet<Employee> Employees { get; set; }
 
 
-        //public DbSet<ProjectTeam> ProjectTeams { get; set; }
+        public DbSet<ProjectTeam> ProjectTeams { get; set; }
 
     }
 }
