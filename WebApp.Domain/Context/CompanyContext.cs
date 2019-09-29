@@ -9,19 +9,20 @@ namespace WebApp.Domain
     {
         public CompanyContext() : base("DefaultConnection")
         {
+            //Database.CreateIfNotExists();
             Database.SetInitializer(new CompanyInitializer());
         }
 
-        DbSet<Client> Clients { get; set; }
+        //public DbSet<Client> Clients { get; set; }
 
 
-        DbSet<Project> Projects { get; set; }
+        //public DbSet<Project> Projects { get; set; }
 
 
-        DbSet<Employee> Employees { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
 
-        DbSet<ProjectTeam> ProjectTeams { get; set; }
+        //public DbSet<ProjectTeam> ProjectTeams { get; set; }
 
     }
 }

@@ -9,11 +9,11 @@ namespace WebApp.Domain
     /// <summary>
     /// Basic properties for everything
     /// </summary>
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         /// <summary>
         /// An id of a entity
         /// </summary>
-        int Id { get; set; }
+        public int Id { get; set; }
     }
 }

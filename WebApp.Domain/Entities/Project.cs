@@ -51,7 +51,6 @@ namespace WebApp.Domain
             }
         }
 
-        [Range(0, 3)]
         /// <summary>
         /// A description of a project
         /// </summary>

@@ -9,7 +9,13 @@ namespace WebApp.Domain
     {
         protected override void Seed(CompanyContext context)
         {
-            base.Seed(context);
+            context.Employees.Add(new Employee
+            {
+                Name = "him"
+                //Email = "aaajkkaa@gmail.com"
+                //ProjectCount = 1
+            });
+            context.SaveChanges();
         }
     }
 }
