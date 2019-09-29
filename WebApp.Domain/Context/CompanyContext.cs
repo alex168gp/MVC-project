@@ -10,7 +10,8 @@ namespace WebApp.Domain
         public CompanyContext() : base("DefaultConnection")
         {
             //Database.CreateIfNotExists();
-            Database.SetInitializer(new CompanyInitializer());
+            Database.SetInitializer<CompanyContext>(new CompanyInitializer());
+            Database.Initialize(true);
         }
 
         //public DbSet<Client> Clients { get; set; }
