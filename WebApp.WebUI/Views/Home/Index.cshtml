@@ -4,21 +4,16 @@
 @model WebApp.WebUI.ProjectOrder
 
 
-@ViewBag.Dif
     <form method="post">
-        @*
+        
         @Html.TextBoxFor(model => model.ClientName, new { placeholder = "Your Name" })
     
     @Html.TextBoxFor(model => model.ClientEmail, new { placeholder = "Contact email"})
     @Html.TextBoxFor(model => model.ClientPhone, new { placeholder = "Phone number"})
     <br />
     @Html.TextBoxFor(model => model.ProjectName, new { placeholder = "Project name"})
-    <div>
-        <ul>
-        </ul>
-    </div>*@
     @Html.DropDownListFor(model => model.ProjectDifficulty, Model.ProjectDifficulties)
-    @*Html.TextAreaFor(model => model.ProjectDescription, new { placeholder = "Enter a description of a project"})*@
+    @Html.TextAreaFor(model => model.ProjectDescription, new { placeholder = "Enter a description of a project"})
      
         <input type="submit" value="Suggest a project" />
     </form>

@@ -32,7 +32,7 @@ namespace WebApp.Domain
         /// <summary>
         /// A project that client ordered
         /// </summary>
-        public Project Project { get; set; } 
+        public Project CurrentProject { get; set; } 
 
         #endregion
     }

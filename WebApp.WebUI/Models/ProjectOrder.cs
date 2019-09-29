@@ -16,15 +16,8 @@ namespace WebApp.WebUI
 
         public string ProjectName { get; set; }
 
-        public IEnumerable<SelectListItem> ProjectDifficulties { get; set; }/* = new List<SelectListItem>
-        {
-            new SelectListItem { Text = "1", Value="1" },
-            new SelectListItem { Text = "2", Value="2" },
-            new SelectListItem { Text = "3", Value="3" },
-            new SelectListItem { Text = "4", Value="4" },
-            new SelectListItem { Text = "5", Value="5" }
-        };
-        */
+        public IEnumerable<SelectListItem> ProjectDifficulties { get; set; }
+
         public int ProjectDifficulty { get; set; }
 
         public string ProjectDescription { get; set; }
