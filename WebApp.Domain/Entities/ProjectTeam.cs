@@ -10,22 +10,31 @@ namespace WebApp.Domain
     /// </summary>
     public class ProjectTeam: BaseEntity
     {
+        #region Private Members
+
+        /// <summary>
+        /// A project the team is working on
+        /// </summary>
+        private Project mCurrentProject; 
+
+        #endregion
         #region Public Properties
 
         /// <summary>
         /// A project the team is working on
         /// </summary>
-        public Project Project { get; set; }
+        public Project CurrentProject
+        {
+            get => mCurrentProject;
+            set
+            {
+                // Maximum number of employees depends on a project difficulty, 3 per level
+                MaxCapacity = value.Difficulty * 3;
 
-        /// <summary>
-        /// When team started to work on a project
-        /// </summary>
-        public DateTime StartDate { get; set; }
-
-        /// <summary>
-        /// Estimated time that need team to complete project
-        /// </summary>
-        public DateTime ProjectTimeDuration { get; set; }
+                // set value
+                mCurrentProject = value;
+            }
+        }
 
         /// <summary>
         /// A list of employees that work on a project
@@ -35,7 +44,7 @@ namespace WebApp.Domain
         /// <summary>
         /// A maximum of employees that could be in a team
         /// </summary>
-        public int MaxCapacity { get; set; } = 3;
+        public int MaxCapacity { get; private set; } = 3;
 
         #endregion
     }

@@ -52,6 +52,16 @@ namespace WebApp.Domain
         }
 
         /// <summary>
+        /// When team started to work on a project
+        /// </summary>
+        //public DateTime StartDate { get; set; }
+
+        /// <summary>
+        /// Estimated time that need team to complete project
+        /// </summary>
+        //public DateTime ProjectTimeDuration { get; set; }
+
+        /// <summary>
         /// A description of a project
         /// </summary>
         public string Description { get; set; } 
