@@ -93,17 +93,5 @@ namespace WebApp.Domain
         public ICollection<ProjectTeam> Teams { get; set; }
 
         #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public Employee()
-        {
-            //this.ProjectCount = 0;
-        }
-
-        #endregion
     }
 }

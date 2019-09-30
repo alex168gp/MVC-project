@@ -1,7 +1,20 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+@model WebApp.WebUI.ProjectOrderInformation
+
+<div>
+    Starting date:
+    @Html.DisplayFor(m => m.StartDate)
+</div>
+<div>
+    Estimated date for a complete project:
+    @Html.DisplayFor(m => m.ProjectTimeDuration)
+</div>
+
+<div>
+    Members of a team:
+    @Html.DisplayFor(m => m.Employees)
+</div>
 
 @Html.ActionLink("Back", "Index", "Home")

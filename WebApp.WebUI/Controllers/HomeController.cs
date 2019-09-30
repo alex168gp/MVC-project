@@ -60,10 +60,14 @@ namespace WebApp.WebUI.Controllers
                     CurrentProject = project
                 });
                 company.Projects.Add(project);
+
+                var teamMembers = company.Employees.Where(employee => employee.Availability == true).Take(project.Difficulty * 3).ToList();
+                teamMembers.ForEach(employee => employee.ProjectCount++);
+
                 company.ProjectTeams.Add(new ProjectTeam
                 {
                     CurrentProject = project,
-                    Employees = company.Employees.Where(employee => employee.Availability == true).Take(project.Difficulty*3).ToList()
+                    Employees = teamMembers
                 });
                 
                 company.SaveChanges();
@@ -74,9 +78,18 @@ namespace WebApp.WebUI.Controllers
 
         public ActionResult OrderResult(ProjectOrder projectOrder)
         {
-            ViewBag.Message = projectOrder.ClientName;
-
-            return View();
+            Project project;
+            List<Employee> projectTeam;
+            using (CompanyContext company = new CompanyContext())
+            {
+                project = company.Projects.ToList().LastOrDefault();
+                projectTeam = company.ProjectTeams.Where(team => team.CurrentProject.Id == project.Id).SelectMany(team => team.Employees).ToList();
+            }
+            var orderInformation = new ProjectOrderInformation();
+            orderInformation.StartDate = project.StartDate;
+            orderInformation.ProjectTimeDuration = project.ProjectTimeDuration;
+            orderInformation.Employees = projectTeam;
+            return View(orderInformation);
         }
 
         public ActionResult Contact()

@@ -54,12 +54,12 @@ namespace WebApp.Domain
         /// <summary>
         /// When team started to work on a project
         /// </summary>
-        //public DateTime StartDate { get; set; }
+        public DateTime StartDate { get; set; } = DateTime.UtcNow.AddDays(7);
 
         /// <summary>
         /// Estimated time that need team to complete project
         /// </summary>
-        //public DateTime ProjectTimeDuration { get; set; }
+        public DateTime ProjectTimeDuration { get; set; } = DateTime.UtcNow.AddDays(37);
 
         /// <summary>
         /// A description of a project
