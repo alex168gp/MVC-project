@@ -112,5 +112,31 @@ namespace WebApp.WebUI.Controllers
 
             return View(projectsShow);
         }
+
+        public ActionResult EmployeesShow()
+        {
+            EmployeesShow employeesShow;
+            List<EmployeeShow> employeesWork = new List<EmployeeShow>();
+            using (CompanyContext company = new CompanyContext())
+            {
+                employeesWork = company.Employees.Select(employee => new EmployeeShow() { EmployeeName = employee.Name, ProjectNames = employee.Teams.Select(team => team.CurrentProject.Name).ToList()})
+                                                 //.SelectMany(employee => employee.Teams, (emp, team) => new EmployeeShow() { EmployeeName = emp.Name, ProjectName = team.CurrentProject.Name })
+                                                 .ToList();
+                
+            }
+            employeesShow = new EmployeesShow();
+            employeesShow.EmployeesWork = employeesWork;
+            /*
+            if (employees == null)
+            {
+                employeesShow.Employees = new List<Employee>();
+            }
+            else
+            {
+                employeesShow.Employees = employees;
+            }
+            */
+            return View(employeesShow);
+        }
     }
 }

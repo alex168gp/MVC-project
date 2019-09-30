@@ -1,0 +1,29 @@
+﻿@model WebApp.WebUI.EmployeesShow
+
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Project
+            </th>
+        </tr>
+
+        @foreach (var employee in Model.EmployeesWork)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => employee.EmployeeName)
+            </td>
+            <td>
+                @foreach (var project in employee.ProjectNames)
+                {
+                <div>
+                    @Html.DisplayFor(modelItem => project)
+                </div>
+                }
+            </td>
+        </tr>
+        }
+    </table>
