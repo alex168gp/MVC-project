@@ -1,0 +1,42 @@
+﻿@model WebApp.WebUI.ProjectsShow
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Difficulty
+        </th>
+        <th>
+            Start date
+        </th>
+        <th>
+            Estimated time for project
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Projects)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Difficulty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectTimeDuration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+        </tr>
+    }
+</table>

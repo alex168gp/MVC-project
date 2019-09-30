@@ -92,11 +92,25 @@ namespace WebApp.WebUI.Controllers
             return View(orderInformation);
         }
 
-        public ActionResult Contact()
+        public ActionResult ProjectsShow()
         {
-            ViewBag.Message = "Your contact page.";
+            List<Project> projects;
+            using (CompanyContext company = new CompanyContext())
+            {
+                projects = company.Projects.ToList();
+            }
 
-            return View();
+            ProjectsShow projectsShow = new ProjectsShow();
+            if (projects == null)
+            {
+                projectsShow.Projects = new List<Project>();
+            }
+            else
+            {
+                projectsShow.Projects = projects;
+            }
+
+            return View(projectsShow);
         }
     }
 }

@@ -133,6 +133,7 @@
     </Compile>
     <Compile Include="Models\ProjectOrder.cs" />
     <Compile Include="Models\ProjectOrderInformation.cs" />
+    <Compile Include="Models\ProjectsShow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -169,7 +170,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\OrderResult.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\ProjectsShow.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
