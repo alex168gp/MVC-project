@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebApp.Domain;
 
-namespace WebApp.WebUI.Controllers
+namespace WebApp.WebUI
 {
     public class HomeController : Controller
     {
@@ -13,6 +13,8 @@ namespace WebApp.WebUI.Controllers
         {
             var projectOrder = new ProjectOrder();
             List<SelectListItem> selectListItems = new List<SelectListItem>();
+
+            // populate dropdown list
             for (int i = 0; i < 5; i++)
             {
                 selectListItems.Add(new SelectListItem
@@ -28,6 +30,7 @@ namespace WebApp.WebUI.Controllers
         [HttpPost]
         public ActionResult Index(ProjectOrder projectOrder)
         {
+            // if something wrong
             if (!ModelState.IsValid)
             {
                 List<SelectListItem> selectListItems = new List<SelectListItem>();
@@ -92,8 +95,10 @@ namespace WebApp.WebUI.Controllers
             return View(orderInformation);
         }
 
-        public ActionResult ProjectsShow()
+        public ActionResult ProjectsShow(int page=1)
         {
+
+            int pageSize = 5;
             List<Project> projects;
             using (CompanyContext company = new CompanyContext())
             {
@@ -101,13 +106,27 @@ namespace WebApp.WebUI.Controllers
             }
 
             ProjectsShow projectsShow = new ProjectsShow();
+            PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = projects.Count };
+            if (page > pageInfo.TotalPages || page < pageInfo.TotalPages)
+            {
+                return Redirect("~/Views/Shared/Error.cshtml");
+            }
+            if (pageInfo != null)
+            {
+                projectsShow.PageInfo = pageInfo;
+            }
+            else
+            {
+                projectsShow.PageInfo = new PageInfo();
+            }
+
             if (projects == null)
             {
                 projectsShow.Projects = new List<Project>();
             }
             else
             {
-                projectsShow.Projects = projects;
+                projectsShow.Projects = projects.Skip((page - 1) * pageSize).Take(pageSize);
             }
 
             return View(projectsShow);
@@ -116,26 +135,29 @@ namespace WebApp.WebUI.Controllers
         public ActionResult EmployeesShow()
         {
             EmployeesShow employeesShow;
-            List<EmployeeShow> employeesWork = new List<EmployeeShow>();
+            List<EmployeeShow> employeesWork;
             using (CompanyContext company = new CompanyContext())
             {
-                employeesWork = company.Employees.Select(employee => new EmployeeShow() { EmployeeName = employee.Name, ProjectNames = employee.Teams.Select(team => team.CurrentProject.Name).ToList()})
+                employeesWork = company.Employees.Select(employee => new EmployeeShow() { 
+                                                                                        EmployeeName = employee.Name, 
+                                                                                        ProjectNames = employee.Teams.Select(team => team.CurrentProject.Name).ToList()
+                                                                                        })
                                                  //.SelectMany(employee => employee.Teams, (emp, team) => new EmployeeShow() { EmployeeName = emp.Name, ProjectName = team.CurrentProject.Name })
-                                                 .ToList();
+                                                                                        .ToList();
                 
             }
             employeesShow = new EmployeesShow();
-            employeesShow.EmployeesWork = employeesWork;
-            /*
-            if (employees == null)
+            
+            if (employeesWork == null)
             {
-                employeesShow.Employees = new List<Employee>();
+                employeesShow.EmployeesWork = new List<EmployeeShow>();
             }
             else
             {
-                employeesShow.Employees = employees;
+                employeesShow.EmployeesWork = employeesWork;
             }
-            */
+            
+            employeesShow.EmployeesWork = employeesWork;
             return View(employeesShow);
         }
     }

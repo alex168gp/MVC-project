@@ -18,6 +18,7 @@ namespace WebApp.Domain
         private Project mCurrentProject; 
 
         #endregion
+
         #region Public Properties
 
         /// <summary>

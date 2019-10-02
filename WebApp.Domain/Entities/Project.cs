@@ -64,7 +64,12 @@ namespace WebApp.Domain
         /// <summary>
         /// A description of a project
         /// </summary>
-        public string Description { get; set; } 
+        public string Description { get; set; }
+
+        /// <summary>
+        /// A price of a project
+        /// </summary>
+        public int Price { get; set; }
 
         #endregion
     }

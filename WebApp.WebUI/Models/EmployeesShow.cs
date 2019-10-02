@@ -11,7 +11,7 @@ namespace WebApp.WebUI
         /// <summary>
         /// A list of company employees and project they're working for
         /// </summary>
-        public List<EmployeeShow> EmployeesWork { get; set; }
+        public IEnumerable<EmployeeShow> EmployeesWork { get; set; }
 
     }
 }

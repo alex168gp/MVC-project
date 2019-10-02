@@ -9,8 +9,8 @@ namespace WebApp.Domain
     {
         public CompanyContext() : base("DefaultConnection")
         {
-            // set an initializer for initial database fill
-            Database.SetInitializer<CompanyContext>(new CompanyInitializer());
+            // set an initializer for initial database fill    new CompanyInitializer()
+            Database.SetInitializer<CompanyContext>(null);
 
             // force creation
             Database.Initialize(true);

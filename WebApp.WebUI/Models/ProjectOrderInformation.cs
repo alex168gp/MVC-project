@@ -18,6 +18,6 @@ namespace WebApp.WebUI
         /// </summary>
         public DateTime ProjectTimeDuration { get; set; } = DateTime.UtcNow.AddDays(37);
 
-        public List<Employee> Employees { get; set; }
+        public IEnumerable<Employee> Employees { get; set; }
     }
 }

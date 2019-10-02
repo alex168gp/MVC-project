@@ -6,7 +6,7 @@
 
     <form method="post">
         
-        @Html.TextBoxFor(model => model.ClientName, new { placeholder = "Your Name" })
+        @Html.TextBoxFor(model => model.ClientName, new { placeholder = "Your Name", required = "required" })
     
     @Html.TextBoxFor(model => model.ClientEmail, new { placeholder = "Contact email"})
     @Html.TextBoxFor(model => model.ClientPhone, new { placeholder = "Phone number"})

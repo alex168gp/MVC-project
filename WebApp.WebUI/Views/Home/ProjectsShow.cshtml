@@ -40,3 +40,7 @@
         </tr>
     }
 </table>
+
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("ProjectsShow", new { page = x }))
+</div>

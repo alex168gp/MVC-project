@@ -10,6 +10,6 @@ namespace WebApp.WebUI
     {
         public string EmployeeName { get; set; }
 
-        public List<string> ProjectNames { get; set; }
+        public IEnumerable<string> ProjectNames { get; set; }
     }
 }

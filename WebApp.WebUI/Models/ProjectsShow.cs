@@ -11,6 +11,11 @@ namespace WebApp.WebUI
         /// <summary>
         /// A list of company projects
         /// </summary>
-        public List<Project> Projects { get; set; }
+        public IEnumerable<Project> Projects { get; set; }
+
+        /// <summary>
+        /// Information about page
+        /// </summary>
+        public PageInfo PageInfo { get; set; }
     }
 }
